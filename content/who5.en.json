@@ -1,0 +1,41 @@
+{
+  "language": "en",
+  "questions": [
+    "I have felt cheerful and in good spirits",
+    "I have felt calm and relaxed",
+    "I have felt active and vigorous",
+    "I woke up feeling fresh and rested",
+    "My daily life has been filled with things that interest me"
+  ],
+  "answers": [
+    {
+      "value": 5,
+      "label": "All of the time"
+    },
+    {
+      "value": 4,
+      "label": "Most of the time"
+    },
+    {
+      "value": 3,
+      "label": "More than half of the time"
+    },
+    {
+      "value": 2,
+      "label": "Less than half of the time"
+    },
+    {
+      "value": 1,
+      "label": "Some of the time"
+    },
+    {
+      "value": 0,
+      "label": "At no time"
+    }
+  ],
+  "messages": {
+    "low": "Your well-being is very low. It’s worth seeing a psychotherapist or a doctor: that’s self-care, not a verdict.",
+    "reduced": "Your well-being is lowered. It’s good that you’re here.",
+    "normal": "Your well-being is in the usual range."
+  }
+}
