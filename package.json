@@ -1,0 +1,8 @@
+{
+  "name": "ladder-who5",
+  "version": "0.1.0",
+  "description": "WHO-5 well-being check flow and Ladder question templates from 108psy.com",
+  "type": "module",
+  "license": "MIT",
+  "scripts": { "test": "node --test" }
+}

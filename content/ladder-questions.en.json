@@ -1,0 +1,14 @@
+{
+  "language": "en",
+  "questions": {
+    "step3Question": "What do you want right now, at this stage of your life?",
+    "step3Hint": "Your goal should be measurable, something you can count: money, weight, number of clients. For example, “200,000 ₸ a month”.",
+    "step4Question": "Is this really your goal?",
+    "step5Question": "How many steps does your ladder have?",
+    "step5Hint": "Any number, for example 7, 10 or 15",
+    "step6Hint": "Choose a step",
+    "step7Hint": "Choose a step above your “I” point",
+    "step9AnswerHint": "One or two words are enough.",
+    "step11Question": "What has become clear?"
+  }
+}
