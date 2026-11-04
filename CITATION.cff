@@ -11,6 +11,7 @@ authors:
 repository-code: "https://github.com/liaizhan/ladder-who5"
 url: "https://liaizhan.github.io/ladder-who5/demo/"
 license: MIT
+doi: 10.5281/zenodo.23961621
 version: 0.2.0
 date-released: 2026-11-05
 keywords:
