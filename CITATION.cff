@@ -20,3 +20,15 @@ keywords:
   - mental health
   - self-help
   - women's health
+references:
+  - type: article
+    title: "Онлайн-самопроверка внутренних препятствий на пути к цели: структура, операционализация и пилотные данные методики «Лестница»"
+    authors:
+      - family-names: Li
+        given-names: Aizhan
+        orcid: "https://orcid.org/0009-0002-5669-0445"
+    year: 2026
+    publisher:
+      name: Zenodo
+    doi: 10.5281/zenodo.23960425
+    notes: "Preprint"
