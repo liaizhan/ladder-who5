@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>WHO-5 well-being check · ladder-who5</title>
+<meta name="description" content="Free WHO-5 well-being check in Kazakh, Russian and English. Runs in your browser, stores nothing. Open part of 108psy.com by Aizhan Li, author of the Ladder method.">
+<style>
+  :root { --bg:#fff; --tile:#f5f5f7; --text:#1d1d1f; --muted:#6e6e73; --accent:#0071e3; --link:#0066cc; --line:#d2d2d7; }
+  @media (prefers-color-scheme: dark) { :root { --bg:#000; --tile:#1c1c1e; --text:#f5f5f7; --muted:#a1a1a6; --accent:#0a84ff; --link:#2997ff; --line:#38383a; } }
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--bg); color:var(--text); font:17px/1.47 -apple-system, BlinkMacSystemFont, "Inter", "Segoe UI", sans-serif; }
+  main { max-width:640px; margin:0 auto; padding:32px 16px 64px; }
+  header { display:flex; justify-content:space-between; align-items:center; gap:12px; margin-bottom:32px; }
+  .langs button { border:0; background:none; color:var(--muted); font:inherit; font-size:15px; padding:6px 8px; cursor:pointer; border-radius:8px; }
+  .langs button[aria-pressed="true"] { color:var(--text); background:var(--tile); font-weight:600; }
+  h1 { font-size:34px; line-height:1.1; letter-spacing:-0.02em; margin:0 0 12px; }
+  .lead { color:var(--muted); margin:0 0 32px; }
+  fieldset { border:0; background:var(--tile); border-radius:18px; padding:20px; margin:0 0 16px; }
+  legend { float:left; width:100%; font-weight:600; margin-bottom:12px; padding:0; }
+  .opts { clear:both; display:grid; gap:6px; }
+  label { display:flex; gap:10px; align-items:center; padding:8px 10px; border-radius:10px; cursor:pointer; }
+  label:hover { background:var(--bg); }
+  input[type=radio] { accent-color:var(--accent); width:18px; height:18px; margin:0; }
+  .submit { width:100%; border:0; border-radius:12px; background:var(--accent); color:#fff; font:inherit; font-weight:600; padding:14px; cursor:pointer; margin-top:8px; }
+  .submit:disabled { opacity:.4; cursor:default; }
+  #result { background:var(--tile); border-radius:18px; padding:24px; margin-top:24px; }
+  #result[hidden] { display:none; }
+  .score { font-size:56px; font-weight:700; letter-spacing:-0.03em; line-height:1; font-variant-numeric:tabular-nums; }
+  .score small { font-size:20px; color:var(--muted); font-weight:500; }
+  .note { color:var(--muted); font-size:14px; margin-top:32px; }
+  a { color:var(--link); }
+  .cta { display:block; margin-top:16px; }
+</style>
+</head>
+<body>
+<main>
+  <header>
+    <strong>ladder-who5</strong>
+    <nav class="langs" aria-label="Language">
+      <button data-lang="kk">KZ</button><button data-lang="ru">RU</button><button data-lang="en">EN</button>
+    </nav>
+  </header>
+  <h1 data-t="title"></h1>
+  <p class="lead" data-t="lead"></p>
+  <form id="form"></form>
+  <section id="result" hidden aria-live="polite">
+    <div class="score"><span id="score"></span><small>/100</small></div>
+    <p id="message"></p>
+    <a id="help" class="cta" data-t="help"></a>
+    <a id="plugin" class="cta" href="https://chatgpt.com/plugins/plugin_asdk_app_6ada41b9737081919d0b0cd3b582b3c4" data-t="plugin"></a>
+    <a id="site" class="cta" data-t="site"></a>
+  </section>
+  <p class="note"><span data-t="privacy"></span> <span data-t="notdx"></span><br>
+    <span data-t="by"></span> <a href="https://github.com/liaizhan/ladder-who5" data-t="source"></a></p>
+</main>
+<script type="module">
+import { who5Score, who5Band } from '../src/who5.mjs';
+
+const UI = {
+  en: { title: 'How have you been feeling?', lead: 'Five statements about the last two weeks. Pick how often each was true for you.', submit: 'Show my result', help: 'Helplines in Kazakhstan', plugin: 'Go further with the Ladder in ChatGPT', site: 'Free Ladder diagnostic on 108psy.com', privacy: 'Runs in your browser. Nothing is sent or stored.', notdx: 'The score is not a diagnosis and does not replace a doctor.', by: 'WHO-5 Well-Being Index (WHO, 1998). Built by Aizhan Li, author of the Ladder method.', source: 'Source code', site_url: 'https://108psy.com/en', help_url: 'https://108psy.com/pomosh' },
+  ru: { title: 'Как ты себя чувствовала?', lead: 'Пять утверждений о последних двух неделях. Отметь, как часто это было про тебя.', submit: 'Показать результат', help: 'Телефоны помощи в Казахстане', plugin: 'Пройти «Лестницу» в ChatGPT', site: 'Бесплатная диагностика «Лестница» на 108psy.com', privacy: 'Работает в браузере. Ответы никуда не отправляются и не хранятся.', notdx: 'Балл не диагноз и не заменяет врача.', by: 'Индекс благополучия ВОЗ-5 (ВОЗ, 1998). Сделала Айжан Ли, автор методики «Лестница».', source: 'Исходный код', site_url: 'https://108psy.com', help_url: 'https://108psy.com/pomosh' },
+  kk: { title: 'Өзіңді қалай сезіндің?', lead: 'Соңғы екі апта туралы бес тұжырым. Әрқайсысы саған қаншалықты жиі сай келгенін белгіле.', submit: 'Нәтижені көрсету', help: 'Қазақстандағы көмек телефондары', plugin: '«Баспалдақты» ChatGPT-де өту', site: '108psy.com сайтында тегін «Баспалдақ» диагностикасы', privacy: 'Браузерде жұмыс істейді. Жауаптар еш жаққа жіберілмейді және сақталмайды.', notdx: 'Балл диагноз емес және дәрігерді алмастырмайды.', by: 'ДДСҰ-5 әл-ауқат индексі (ДДСҰ, 1998). Авторы: Айжан Ли, «Баспалдақ» әдістемесінің авторы.', source: 'Бастапқы код', site_url: 'https://108psy.com/kk', help_url: 'https://108psy.com/kk/pomosh' },
+};
+
+const form = document.getElementById('form');
+const result = document.getElementById('result');
+let lang = 'en';
+let content = {};
+
+function pickLang() {
+  const saved = new URLSearchParams(location.search).get('lang');
+  if (UI[saved]) return saved;
+  const nav = (navigator.language || 'en').slice(0, 2);
+  return UI[nav] ? nav : 'en';
+}
+
+async function load(l) {
+  if (!content[l]) content[l] = await fetch(`../content/who5.${l}.json`).then(r => r.json());
+  return content[l];
+}
+
+async function render(l) {
+  const prev = new FormData(form);
+  lang = l;
+  document.documentElement.lang = l;
+  for (const b of document.querySelectorAll('.langs button')) b.setAttribute('aria-pressed', String(b.dataset.lang === l));
+  for (const el of document.querySelectorAll('[data-t]')) el.textContent = UI[l][el.dataset.t];
+  document.getElementById('help').href = UI[l].help_url;
+  document.getElementById('site').href = UI[l].site_url;
+  const c = await load(l);
+  form.innerHTML = '';
+  c.questions.forEach((q, i) => {
+    const fs = document.createElement('fieldset');
+    fs.innerHTML = `<legend>${i + 1}. ${q}</legend><div class="opts"></div>`;
+    const opts = fs.querySelector('.opts');
+    for (const a of c.answers) {
+      const lab = document.createElement('label');
+      const checked = prev.get(`q${i}`) === String(a.value) ? 'checked' : '';
+      lab.innerHTML = `<input type="radio" name="q${i}" value="${a.value}" ${checked}> ${a.label}`;
+      opts.append(lab);
+    }
+    form.append(fs);
+  });
+  const btn = document.createElement('button');
+  btn.className = 'submit';
+  btn.type = 'submit';
+  btn.textContent = UI[l].submit;
+  form.append(btn);
+  update();
+  if (!result.hidden) show();
+}
+
+function answers() {
+  const fd = new FormData(form);
+  return [0, 1, 2, 3, 4].map(i => fd.get(`q${i}`)).map(v => v === null ? null : Number(v));
+}
+
+function update() {
+  form.querySelector('.submit').disabled = answers().includes(null);
+}
+
+function show() {
+  const a = answers();
+  if (a.includes(null)) return;
+  const score = who5Score(a);
+  const band = who5Band(score);
+  document.getElementById('score').textContent = score;
+  document.getElementById('message').textContent = content[lang].messages[band];
+  document.getElementById('help').hidden = band === 'normal';
+  result.hidden = false;
+  result.scrollIntoView({ behavior: 'smooth', block: 'start' });
+}
+
+form.addEventListener('change', update);
+form.addEventListener('submit', e => { e.preventDefault(); show(); });
+for (const b of document.querySelectorAll('.langs button')) b.addEventListener('click', () => render(b.dataset.lang));
+render(pickLang());
+</script>
+</body>
+</html>

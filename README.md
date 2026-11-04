@@ -3,11 +3,14 @@
 Open part of [108psy.com](https://108psy.com): a free AI-guided self-help
 diagnostic for women in Kazakhstan (Russian, Kazakh, English).
 
+**Try it in your browser:** [liaizhan.github.io/ladder-who5](https://liaizhan.github.io/ladder-who5/demo/) (Kazakh, Russian, English; nothing is sent or stored).
+
 This repository contains:
 
 - `src/who5.mjs`: WHO-5 Well-Being Index scoring and bands (rule-based, no AI). MIT.
 - `content/who5.{en,ru,kk}.json`: the five WHO-5 items, answer scale and result messages in three languages. CC BY 4.0.
 - `content/ladder-questions.{en,ru,kk}.json`: question templates of the Ladder method (goal, number of steps, "I" step, takeaway). CC BY 4.0.
+- `demo/`: the WHO-5 check as a static page, served by GitHub Pages.
 - `test/`: unit tests. Run `npm test` (Node 20+).
 
 ## Use it in ChatGPT
