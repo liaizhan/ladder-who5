@@ -1,6 +1,6 @@
 # ladder-who5
 
-[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23961621.svg)](https://doi.org/10.5281/zenodo.23961621)
+[![DOI](https://zenodo.org/badge/DOI/10.5281/zenodo.23961621.svg)](https://doi.org/10.5281/zenodo.23961621) [![test](https://github.com/liaizhan/ladder-who5/actions/workflows/test.yml/badge.svg)](https://github.com/liaizhan/ladder-who5/actions/workflows/test.yml)
 
 Open part of [108psy.com](https://108psy.com): a free AI-guided self-help
 diagnostic for women in Kazakhstan (Russian, Kazakh, English).
