@@ -10,6 +10,16 @@ This repository contains:
 - `content/ladder-questions.{en,ru,kk}.json`: question templates of the Ladder method (goal, number of steps, "I" step, takeaway). CC BY 4.0.
 - `test/`: unit tests. Run `npm test` (Node 20+).
 
+## Use it in ChatGPT
+
+The Ladder method is also available as a ChatGPT plugin, **Ladder by Aizhan Li**. OpenAI approved it and listed it in the ChatGPT plugin directory on 4 November 2026.
+
+[Open Ladder by Aizhan Li in ChatGPT](https://chatgpt.com/plugins/plugin_asdk_app_6ada41b9737081919d0b0cd3b582b3c4)
+
+It asks four questions: your goal, where you are now, what stands between you and the goal, and what you fear. Then it shows what holds you back. It answers in Kazakh, Russian or English, needs no sign-in, stores no answers and shows no price. The plugin contains no language model: the steps of the ladder are classified by fixed rules, the same as on the site. It does not diagnose, and on crisis wording it shows helplines instead of an analysis.
+
+To find it, open Plugins in ChatGPT and search for Ladder.
+
 ## How it is used in the product
 
 A woman answers the five WHO-5 items for the last two weeks. The score is computed
