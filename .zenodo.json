@@ -1,0 +1,14 @@
+{
+  "title": "ladder-who5: WHO-5 well-being check and Ladder method question templates in Kazakh, Russian and English",
+  "upload_type": "software",
+  "description": "Open part of 108psy.com, a free self-help diagnostic for women in Kazakhstan. Contains WHO-5 Well-Being Index scoring (rule-based, no AI), a static browser demo, and question templates of the Ladder method by Aizhan Li in Kazakh, Russian and English. The Russian and Kazakh WHO-5 wordings are working translations, not official validated versions. The score is not a diagnosis.",
+  "creators": [
+    { "name": "Li, Aizhan", "affiliation": "108psy.com", "orcid": "0009-0002-5669-0445" }
+  ],
+  "license": "MIT",
+  "keywords": ["WHO-5", "well-being", "Kazakh", "mental health", "self-help", "women's health"],
+  "language": "eng",
+  "related_identifiers": [
+    { "identifier": "https://108psy.com", "relation": "isSupplementTo", "resource_type": "other" }
+  ]
+}

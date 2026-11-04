@@ -1,0 +1,22 @@
+cff-version: 1.2.0
+message: "If you use this software or texts, please cite them as below."
+title: "ladder-who5: WHO-5 well-being check and Ladder method question templates in Kazakh, Russian and English"
+abstract: "Open part of 108psy.com: WHO-5 Well-Being Index scoring, a browser demo, and question templates of the Ladder method in Kazakh, Russian and English."
+type: software
+authors:
+  - family-names: Li
+    given-names: Aizhan
+    orcid: "https://orcid.org/0009-0002-5669-0445"
+    affiliation: "108psy.com"
+repository-code: "https://github.com/liaizhan/ladder-who5"
+url: "https://liaizhan.github.io/ladder-who5/demo/"
+license: MIT
+version: 0.2.0
+date-released: 2026-11-05
+keywords:
+  - WHO-5
+  - well-being
+  - Kazakh
+  - mental health
+  - self-help
+  - women's health
