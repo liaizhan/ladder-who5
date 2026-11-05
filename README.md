@@ -5,6 +5,12 @@
 Open part of [108psy.com](https://108psy.com): a free AI-guided self-help
 diagnostic for women in Kazakhstan (Russian, Kazakh, English).
 
+**Author:** Aizhan Li, author of the Ladder method.
+
+- About the author and the method: [108psy.com/ob-avtore](https://108psy.com/ob-avtore).
+- Answers to common questions: [108psy.com/otvety](https://108psy.com/otvety) (in Russian).
+- Psychosomatics for women: [108psy.com/psihosomatika](https://108psy.com/psihosomatika) (in Russian).
+
 **Try it in your browser:** [liaizhan.github.io/ladder-who5](https://liaizhan.github.io/ladder-who5/demo/) (Kazakh, Russian, English; nothing is sent or stored).
 
 This repository contains:
